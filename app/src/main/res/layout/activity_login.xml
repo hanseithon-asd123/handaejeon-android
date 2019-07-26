@@ -16,21 +16,25 @@
         <ImageView
             android:layout_width="200sp"
             android:layout_height="120sp"
-            android:layout_gravity="center"/>
-            <!--android:background="@drawable/instagram_logo" />-->
+            android:layout_gravity="center"
+            android:background="@drawable/recycle"/>
 
         <EditText
-            android:id="@+id/edit_id"
+            android:id="@+id/edit_email"
             style="@style/signup_editText"
             android:layout_marginTop="15sp"
-            android:hint="Id" />
+            android:hint="email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"/>
 
 
         <EditText
             android:id="@+id/edit_password"
             style="@style/signup_editText"
             android:layout_marginTop="15sp"
-            android:hint="password" />
+            android:hint="password"
+            android:inputType="textPassword"
+            android:maxLines="1"/>
 
         <TextView
             style="@style/signup_textview"

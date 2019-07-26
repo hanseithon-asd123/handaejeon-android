@@ -1,8 +1,10 @@
 package com.example.handaejeon.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -96,13 +98,17 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    private void signUp(String id, String email, String password1, String password2) {
+    private void signUp(final String id, final String email, String password1, String password2) {
         apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<JsonObject> call = apiInterface.Singup(id, email, password1, password2);
+        Call<JsonObject> call = apiInterface.Singup(id, email, password1,0,0);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.d("TEEET", "onResponse: "+ response.code()+ response.toString());
                 if (response.isSuccessful()){
+
+
+
                     Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
@@ -112,7 +118,7 @@ public class SignupActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-
+                Log.e("onFailure", t.toString());
             }
         });
 

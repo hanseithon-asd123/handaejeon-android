@@ -34,7 +34,8 @@
             android:id="@+id/edit_id"
             style="@style/signup_editText"
             android:layout_marginTop="30sp"
-            android:hint="아이디" />
+            android:hint="이름"
+            android:maxLines="1"/>
 
         <TextView
             android:id="@+id/text_id"
@@ -44,7 +45,9 @@
         <EditText
             android:id="@+id/edit_email"
             style="@style/signup_editText"
-            android:hint="이메일" />
+            android:hint="이메일"
+            android:maxLines="1"
+            android:inputType="textEmailAddress"/>
 
         <TextView
             android:id="@+id/text_email"
@@ -54,7 +57,9 @@
         <EditText
             android:id="@+id/edit_password1"
             style="@style/signup_editText"
-            android:hint="비밀번호" />
+            android:hint="비밀번호"
+            android:maxLines="1"
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/text_password1"
@@ -64,7 +69,9 @@
         <EditText
             android:id="@+id/edit_password2"
             style="@style/signup_editText"
-            android:hint="비밀번호 재확인" />
+            android:hint="비밀번호 재확인"
+            android:maxLines="1"
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/text_password2"
