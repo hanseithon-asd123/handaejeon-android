@@ -39,36 +39,36 @@ public class MyPageActivity extends AppCompatActivity {
 
         point_progressbar = findViewById(R.id.point_progress);
 
-        apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        Call<JsonObject> call = apiInterface.mypage("asd");
-        call.enqueue(new Callback<JsonObject>() {
-            @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.d("TEEET", "onResponse: " + response.code() + response.toString());
-                if (response.isSuccessful()) {
-
-                    JsonElement element = new JsonParser().parse(response.body().toString())
-                            .getAsJsonObject();
-
-                    MypageInfo info = new Gson().fromJson(element, MypageInfo.class);
-
-
-                    int rank = info.ranking;
-                    int point = info.point;
-                    point_progressbar.setProgress(point);
-                    tv_ranking.setText(rank);
-                    tv_email.setText("asd@asd.com");
-                    tv_name.setText("asd");
-
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.e("onFailure", t.toString());
-            }
-        });
+//        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+//        Call<JsonObject> call = apiInterface.mypage("asd");
+//        call.enqueue(new Callback<JsonObject>() {
+//            @Override
+//            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                Log.d("TEEET", "onResponse: " + response.code() + response.toString());
+//                if (response.isSuccessful()) {
+//
+//                    JsonElement element = new JsonParser().parse(response.body().toString())
+//                            .getAsJsonObject();
+//
+//                    MypageInfo info = new Gson().fromJson(element, MypageInfo.class);
+//
+//
+//                    int rank = info.ranking;
+//                    int point = info.point;
+//                    point_progressbar.setProgress(point);
+//                    tv_ranking.setText(rank);
+//                    tv_email.setText("asd@asd.com");
+//                    tv_name.setText("asd");
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<JsonObject> call, Throwable t) {
+//                Log.e("onFailure", t.toString());
+//            }
+//        });
 
 
     }

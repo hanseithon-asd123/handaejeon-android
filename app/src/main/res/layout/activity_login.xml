@@ -16,8 +16,7 @@
         <ImageView
             android:layout_width="200sp"
             android:layout_height="120sp"
-            android:layout_gravity="center"
-            android:background="@drawable/recycle"/>
+            />
 
         <EditText
             android:id="@+id/edit_email"

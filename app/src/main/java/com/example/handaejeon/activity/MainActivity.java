@@ -9,20 +9,31 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
+
 import com.example.handaejeon.R;
+import com.example.handaejeon.adapter.RankingAdatper;
+import com.example.handaejeon.model.RankingInfo;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     TextView tv_name, tv_email;
     SharedPreferences sharedPreferences;
-    String token,email;
+    String token, email;
 
     RecyclerView recyclerView;
+    RankingAdatper adatper;
+    List<RankingInfo> rankingInfos = new ArrayList<>();
+
+    Context context;
 
 
     @Override
@@ -32,7 +43,7 @@ public class MainActivity extends AppCompatActivity
 
         sharedPreferences = getApplicationContext().getSharedPreferences("Token", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "");
-        email = sharedPreferences.getString("email","");
+        email = sharedPreferences.getString("email", "");
 
         if (token.equals("")) {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -57,8 +68,29 @@ public class MainActivity extends AppCompatActivity
         tv_email = findViewById(R.id.tv_email);
         tv_name = findViewById(R.id.tv_name);
 
+        recyclerView = findViewById(R.id.main_recyclerview);
+        adatper = new RankingAdatper(rankingInfos);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adatper);
+        Data();
 
 
+    }
+
+    public void Data() {
+        rankingInfos.add(new RankingInfo(1, 12000, "강민우"));
+        rankingInfos.add(new RankingInfo(2, 11000, "임희선"));
+        rankingInfos.add(new RankingInfo(3, 10000, "조성원"));
+        rankingInfos.add(new RankingInfo(4, 9000, "박준영"));
+        rankingInfos.add(new RankingInfo(5, 8000, "최민규"));
+        rankingInfos.add(new RankingInfo(6, 7000, "오유원"));
+        rankingInfos.add(new RankingInfo(7, 6000, "김우혁"));
+        rankingInfos.add(new RankingInfo(8, 5000, "이예준"));
+        rankingInfos.add(new RankingInfo(9, 4000, "이주연"));
+        rankingInfos.add(new RankingInfo(10, 3000, "김선규"));
+        rankingInfos.add(new RankingInfo(11, 2000, "추성빈"));
+
+        adatper.notifyDataSetChanged();
     }
 
     @Override
